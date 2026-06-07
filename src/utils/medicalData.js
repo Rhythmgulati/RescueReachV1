@@ -252,44 +252,174 @@ export const medicalData = {
   },
 
 //   eye_injury: {
-//     title: { en: "Eye Injury", hi: "आंख की चोट", mr: "डोळ्याला दुखापत" },
-//     image: require("../assets/images/eye.jpg"),
-//     audio: { en: require("../assets/audio/eye_english.wav"), hi: require("../assets/audio/eye_hindi.wav"), mr: require("../assets/audio/eye_marathi.wav") },
-//     steps: {
-//       en: [
-//         { id: 1, t: "Do Not Rub", d: "Do not rub or apply pressure to injured eye." },
-//         { id: 2, t: "Wash with Clean Water", d: "Gently flush eye with clean water for 15-20 minutes." },
-//         { id: 3, t: "Chemical Emergencies", d: "For chemicals, flush immediately with water, keep eye wide open." },
-//         { id: 4, t: "Embedded Objects", d: "Do NOT try to remove objects stuck in eye." },
-//         { id: 5, t: "Cover Both Eyes", d: "Cover injured eye with shield. Best to cover both eyes." },
-//         { id: 6, t: "Consult Specialist", d: "See eye specialist immediately if pain or vision changes." }
-//       ],
-//       hi: [
-//         { id: 1, t: "आंख न मलें", d: "चोट वाली आंख को न मलें और न ही दबाव डालें।" },
-//         { id: 2, t: "साफ पानी से धोएं", d: "आंख को 15-20 मिनट साफ पानी से धोएं।" },
-//         { id: 3, t: "केमिकल इमरजेंसी", d: "केमिकल गिरने पर तुरंत पानी से धोएं, आंख खुली रखें।" },
-//         { id: 4, t: "फंसी वस्तु", d: "आंख में फंसी वस्तु को निकालने की कोशिश न करें।" },
-//         { id: 5, t: "दोनों आंखें ढकें", d: "चोट वाली आंख पर ढाल लगाएं। दोनों आंखें ढकना बेहतर है।" },
-//         { id: 6, t: "विशेषज्ञ से मिलें", d: "दर्द या धुंधलापन होने पर तुरंत डॉक्टर से मिलें।" }
-//       ],
-//       mr: [
-//         { id: 1, t: "डोळा चोळू नका", d: "जखमी डोळ्याला चोळू नका किंवा दाब देऊ नका." },
-//         { id: 2, t: "स्वच्छ पाण्याने धुवा", d: "डोळा १५-२० मिनिटे स्वच्छ पाण्याने धुवा." },
-//         { id: 3, t: "केमिकल इमरजेंसी", d: "केमिकल गेल्यास त्वरित पाण्याने धुवा, डोळा उघडा ठेवा." },
-//         { id: 4, t: "रुतलेली वस्तू", d: "डोळ्यात रुतलेली वस्तू काढण्याचा प्रयत्न करू नका." },
-//         { id: 5, t: "दोन्ही डोळे झाका", d: "जखमी डोळ्यावर ढाल लावा. दोन्ही डोळे झाकणे उत्तम." },
-//         { id: 6, t: "तज्ज्ञांचा सल्ला घ्या", d: "वेदना किंवा अस्पष्ट दिसल्यास त्वरित डोळ्यांच्या डॉक्टरांना भेटा." }
-//       ]
-//     },
-//     dos: {
-//       en: ["Wash hands before touching eye.", "Use clean, boiled water to wash.", "Keep patient calm.", "Carry chemical container to doctor."],
-//       hi: ["आंख छूने से पहले हाथ धोएं।", "धोने के लिए साफ पानी का उपयोग करें।", "मरीज को शांत रखें।", "केमिकल का डिब्बा डॉक्टर को दिखाएं।"],
-//       mr: ["डोळ्याला स्पर्श करण्यापूर्वी हात धुवा.", "धुण्यासाठी स्वच्छ पाण्याचा वापर करा.", "रुग्णाला शांत ठेवा.", "केमिकलची बाटली डॉक्टरांना दाखवा."]
-//     },
-//     donts: {
-//       en: ["Do NOT rub eyes.", "Do NOT use tweezers or needles.", "Do NOT use cotton wool.", "Do NOT use eye drops without prescription."],
-//       hi: ["आंखें न मलें।", "चिमटी या सुई का प्रयोग न करें।", "रुई का प्रयोग न करें।", "बिना डॉक्टर की सलाह के आई-ड्रॉप न डालें।"],
-//       mr: ["डोळे चोळू नका.", "सुई किंवा चिमटा वापरू नका.", "कापूस वापरू नका.", "डॉक्टरांच्या सल्ल्याशिवाय औषध टाकू नका."]
-//     }
-//   }
+  //     title: { en: "Eye Injury", hi: "आंख की चोट", mr: "डोळ्याला दुखापत" },
+  //     image: require("../assets/images/eye.jpg"),
+  //     audio: { en: require("../assets/audio/eye_english.wav"), hi: require("../assets/audio/eye_hindi.wav"), mr: require("../assets/audio/eye_marathi.wav") },
+  //     steps: {
+  //       en: [
+  //         { id: 1, t: "Do Not Rub", d: "Do not rub or apply pressure to injured eye." },
+  //         { id: 2, t: "Wash with Clean Water", d: "Gently flush eye with clean water for 15-20 minutes." },
+  //         { id: 3, t: "Chemical Emergencies", d: "For chemicals, flush immediately with water, keep eye wide open." },
+  //         { id: 4, t: "Embedded Objects", d: "Do NOT try to remove objects stuck in eye." },
+  //         { id: 5, t: "Cover Both Eyes", d: "Cover injured eye with shield. Best to cover both eyes." },
+  //         { id: 6, t: "Consult Specialist", d: "See eye specialist immediately if pain or vision changes." }
+  //       ],
+  //       hi: [
+  //         { id: 1, t: "आंख न मलें", d: "चोट वाली आंख को न मलें और न ही दबाव डालें।" },
+  //         { id: 2, t: "साफ पानी से धोएं", d: "आंख को 15-20 मिनट साफ पानी से धोएं।" },
+  //         { id: 3, t: "केमिकल इमरजेंसी", d: "केमिकल गिरने पर तुरंत पानी से धोएं, आंख खुली रखें।" },
+  //         { id: 4, t: "फंसी वस्तु", d: "आंख में फंसी वस्तु को निकालने की कोशिश न करें।" },
+  //         { id: 5, t: "दोनों आंखें ढकें", d: "चोट वाली आंख पर ढाल लगाएं। दोनों आंखें ढकना बेहतर है।" },
+  //         { id: 6, t: "विशेषज्ञ से मिलें", d: "दर्द या धुंधलापन होने पर तुरंत डॉक्टर से मिलें।" }
+  //       ],
+  //       mr: [
+  //         { id: 1, t: "डोळा चोळू नका", d: "जखमी डोळ्याला चोळू नका किंवा दाब देऊ नका." },
+  //         { id: 2, t: "स्वच्छ पाण्याने धुवा", d: "डोळा १५-२० मिनिटे स्वच्छ पाण्याने धुवा." },
+  //         { id: 3, t: "केमिकल इमरजेंसी", d: "केमिकल गेल्यास त्वरित पाण्याने धुवा, डोळा उघडा ठेवा." },
+  //         { id: 4, t: "रुतलेली वस्तू", d: "डोळ्यात रुतलेली वस्तू काढण्याचा प्रयत्न करू नका." },
+  //         { id: 5, t: "दोन्ही डोळे झाका", d: "जखमी डोळ्यावर ढाल लावा. दोन्ही डोळे झाकणे उत्तम." },
+  //         { id: 6, t: "तज्ज्ञांचा सल्ला घ्या", d: "वेदना किंवा अस्पष्ट दिसल्यास त्वरित डोळ्यांच्या डॉक्टरांना भेटा." }
+  //       ]
+  //     },
+  //     dos: {
+  //       en: ["Wash hands before touching eye.", "Use clean, boiled water to wash.", "Keep patient calm.", "Carry chemical container to doctor."],
+  //       hi: ["आंख छूने से पहले हाथ धोएं।", "धोने के लिए साफ पानी का उपयोग करें।", "मरीज को शांत रखें।", "केमिकल का डिब्बा डॉक्टर को दिखाएं।"],
+  //       mr: ["डोळ्याला स्पर्श करण्यापूर्वी हात धुवा.", "धुण्यासाठी स्वच्छ पाण्याचा वापर करा.", "रुग्णाला शांत ठेवा.", "केमिकलची बाटली डॉक्टरांना दाखवा."]
+  //     },
+  //     donts: {
+  //       en: ["Do NOT rub eyes.", "Do NOT use tweezers or needles.", "Do NOT use cotton wool.", "Do NOT use eye drops without prescription."],
+  //       hi: ["आंखें न मलें।", "चिमटी या सुई का प्रयोग न करें।", "रुई का प्रयोग न करें।", "बिना डॉक्टर की सलाह के आई-ड्रॉप न डालें।"],
+  //       mr: ["डोळे चोळू नका.", "सुई किंवा चिमटा वापरू नका.", "कापूस वापरू नका.", "डॉक्टरांच्या सल्ल्याशिवाय औषध टाकू नका."]
+  //     }
+  //   },
+  bleeding: {
+    title: { en: "Severe Bleeding", hi: "गंभीर रक्तस्राव", mr: "तीव्र रक्तस्त्राव" },
+    image: require("../assets/images/bleeding.jpg"),
+    steps: {
+      en: [
+        { id: 1, t: "Safety First", d: "Put on gloves if available. Protect yourself first." },
+        { id: 2, t: "Direct Pressure", d: "Apply firm pressure with clean cloth or bandage directly on wound." },
+        { id: 3, t: "Add Layers", d: "If blood soaks through, add more cloth layers. Do NOT remove original." },
+        { id: 4, t: "Elevate Limb", d: "Raise injured limb above heart level (if no broken bones)." },
+        { id: 5, t: "Pressure on Artery", d: "If bleeding continues, apply pressure on the artery supplying the area." },
+        { id: 6, t: "Call Emergency", d: "Call 108 immediately for severe bleeding." }
+      ],
+      hi: [
+        { id: 1, t: "सुरक्षा", d: "यदि उपलब्ध हों तो ग्लव बेंस लगाएं। सुरक्षा सबसे पहले।" },
+        { id: 2, t: "सीधा दबाव", d: "साफ कपड़े या बैंडेज से घाव पर सीधे दबाव डालें।" },
+        { id: 3, t: "परत दबाव", d: "यदि खून भीग जाए तो और कपड़े डालें। मूल कपड़ा न उतारें।" },
+        { id: 4, t: "ऊँचा करें", d: "घायल अंग को हृदय से ऊपर उठाएं (अगर हड्डी टूटी न हो)।" },
+        { id: 5, t: "आर्टरी पर दबाव", d: "यदि रक्तस्राव जारी है तो आर्टरी पर दबाव डालें।" },
+        { id: 6, t: "आपातकाल बुलाएं", d: "गंभीर रक्तस्राव के लिए तुरंत 108 बुलाएं।" }
+      ],
+      mr: [
+        { id: 1, t: "सुरक्षा", d: "उपलब्ध असल्यास ग्लव बेंस लावा. सुरक्षा प्रथम." },
+        { id: 2, t: "थेट दाब", d: "स्वच्छ कापड वा बॅन्डेजने घावावर थेट दाब टाका." },
+        { id: 3, t: "अति दाब", d: "रक्त भिजेल तर अधिक कापडे ठेवा. मूळ कापड न वालू." },
+        { id: 4, t: "उंचावा", d: "जखमी अवयव हृदयापेक्षा वर ठेवा (हाड टूटा नसल्यास)." },
+        { id: 5, t: "आर्टेरी वर दाब", d: "रक्तस्त्राव वाढल्यास आर्टेरीवर दाब टाका." },
+        { id: 6, t: "रुग्णाला आणा", d: "तीव्र रक्तस्त्राव असल्यास त्वरित १०८ वर कॉल करा." }
+      ]
+    },
+    dos: {
+      en: ["Use sterile gauze or clean cloth", "Keep the person lying down", "Reassure and keep warm"],
+      hi: ["स्टीरल गौज या साफ कपड़े का उपयोग करें", "व्यक्ति को लेटा रखें", "मरीज को आश्वासन दें और गर्म रखें"],
+      mr: ["स्टीरल गॉज किंवा स्वच्छ कापड वापरा", "व्यक्तीला झोपवून ठेवा", "रुग्णाला धीर द्या आणि गरम ठेवा"]
+    },
+    donts: {
+      en: ["Remove cloth stuck to wound", "Apply tourniquet unless trained", "Remove embedded objects"],
+      hi: ["घाव पर चिपके कपड़े न उतारें", "प्रशिक्षण न होने तक टूर्निक्वेट न लगाएं", "समेटे वस्तु न उतारें"],
+      mr: ["जखमी भागावर चिकटले कापड ओढू नका", "प्रशिक्षण न होल्यावर टोर्निक्वेट घालू नका", "रुतले वस्तू काढू नका"]
+    }
+  },
+
+  shock: {
+    title: { en: "Electric Shock", hi: "बिजली का झटका", mr: "विजेचा धक्का" },
+    image: require("../assets/images/heatstroke.jpg"), // Using heatstroke as fallback image
+    steps: {
+      en: [
+        { id: 1, t: "Turn Off Power", d: "Disconnect the power source immediately. Do NOT touch the person with bare hands." },
+        { id: 2, t: "Assess Consciousness", d: "Check if the person is responsive. If not, call 108 immediately." },
+        { id: 3, t: "Check Breathing", d: "If not breathing, begin CPR." },
+        { id: 4, t: "Treat Burns", d: "Treat any burn injuries following the burn first aid protocol." },
+        { id: 5, t: "Keep Warm", d: "Keep the person lying down with legs elevated (if no leg injury)." },
+        { id: 6, t: "Monitor Vital Signs", d: "Watch for pulse and breathing until help arrives." }
+      ],
+      hi: [
+        { id: 1, t: "बिजली बंद करें", d: "तुरंत बिजली के स्रोत को डिस्कनेक्ट करें।" },
+        { id: 2, t: "होश जाँचें", d: "व्यक्ति को जाँचें कि क्या वह जवाबदेह है।" },
+        { id: 3, t: "सांस पहचानें", d: "यदि व्यक्ति सांस न ले रहा है तो CPR शुरू करें।" },
+        { id: 4, t: "जलन उपचार", d: "जलन के उपचार के लिए बर्न्स प्रोटोकॉल का पालन करें।" },
+        { id: 5, t: "गर्म रखें", d: "व्यक्ति को लेटा हुए रखें।" },
+        { id: 6, t: "विटाल साइन्स", d: "सहायता आने तक पल्स और सांस पर नजर रखें।" }
+      ],
+      mr: [
+        { id: 1, t: "वीज बंद करा", d: "त्वरित वीजाचा स्रोत अपाट करा. रुग्णाला स्वच्छ हाताने छापू नका." },
+        { id: 2, t: "चाकू तपासा", d: "रुग्ण जवाबदेह आहे का ते पाहा." },
+        { id: 3, t: "श्वास तपासा", d: "जर श्वास घेत नाही तर CPR सुरू करा." },
+        { id: 4, t: "भाजणे उपचार", d: "लाडणींच्या प्रथमचार प्रोटोकॉलवर भाजण्यावर उपचार केले." },
+        { id: 5, t: "गरम ठेवा", d: "रुग्णाला झोपवून पाय उंचावून ठेवा." },
+        { id: 6, t: "पल्स मॉनिटर करा", d: "मदत येण्यावर श्वासावर नजर ठेवा." }
+      ]
+    },
+    dos: {
+      en: ["Turn off electricity at source", "Call for emergency help", "Treat burns gently", "Keep person comfortable"],
+      hi: ["बिजली के स्रोत को बंद करें", "आपातकालीन सहायता के लिए बुलाएं", "जलन का सौंदर्यपूर्ण उपचार करें"],
+      mr: ["वीजाचा स्रोत बंद करा", "आपत्कालीन मदतीसाठी बुलाएं", "लाडणींचा सुंदर उपचार करा"]
+    },
+    donts: {
+      en: ["Do NOT touch person with bare hands if still connected to power", "Do NOT move person unless in immediate danger", "Do NOT give anything by mouth"],
+      hi: ["यदि यह अभी भी बिजली से जुडा हुआ है तो व्यक्ति को स्पर्श न करें"],
+      mr: ["जर वीजेशिवाय जुडलेला असेल तर रुग्णाला स्पर्श करू नका"]
+    }
+  }
+  ,
+  cpr: {
+    title: {
+      en: "CPR – Cardiopulmonary Resuscitation",
+      hi: "सीपीआर – कार्डियोपल्मोनरी रिससिटेशन",
+      mr: "सीपीआर – कार्डियोपल्मोनरी रिससिटेशन"
+    },
+    description: {
+      en: "Person is unconscious and NOT breathing. Start CPR immediately.",
+      hi: "व्यक्ति बेहोश है और सांस नहीं ले रही है। तुरंत सीपीआर शुरू करें।",
+      mr: "व्यक्ती बेशुद्ध आहे आणि श्वास घेत नाही. त्वरित सीपीआर सुरू करा."
+    },
+    steps: {
+      en: [
+        { id: 1, t: "Check Responsiveness", d: "Tap and shout – 'Are you okay?' If no response, call 108." },
+        { id: 2, t: "Open Airway", d: "Tilt head back and lift chin." },
+        { id: 3, t: "Check Breathing", d: "Look, listen, feel for normal breathing for 10 seconds." },
+        { id: 4, t: "Start Compressions", d: "Place heel of one hand on center of chest. Push hard and fast (100–120/min)." },
+        { id: 5, t: "Give Rescue Breaths", d: "After 30 compressions, give 2 breaths. Pinch nose, make a seal, blow for 1 second." },
+        { id: 6, t: "Continue CPR", d: "Repeat cycles of 30 compressions and 2 breaths until help arrives." }
+      ],
+      hi: [
+        { id: 1, t: "प्रतिक्रिया जांचें", d: "टैप करें और चिल्लाएं – 'क्या आप ठीक हैं?' कोई जवाब न हो तो 108 पर कॉल करें।" },
+        { id: 2, t: "वायुमार्ग खोलें", d: "सिर पीछे झुकाएं और ठोड़ी उठाएं।" },
+        { id: 3, t: "सांस की जाँच करें", d: "10 सेकंड तक सामान्य सांस देखें, सुनें, महसूस करें।" },
+        { id: 4, t: "कंप्रेशन शुरू करें", d: "एक हाथ की एड़ी छाती के केंद्र पर रखें। जोर से और तेजी से दबाएं (100–120/मिनट)।" },
+        { id: 5, t: "रेस्क्यू ब्रीथ दें", d: "30 कंप्रेशन के बाद, 2 सांसें दें। नाक बंद करें, मुंह से मुंह लगाएं, 1 सेकंड फूंकें।" },
+        { id: 6, t: "सीपीआर जारी रखें", d: "30 कंप्रेशन और 2 सांसों के चक्र दोहराएं जब तक मदद न आ जाए।" }
+      ],
+      mr: [
+        { id: 1, t: "प्रतिसाद तपासा", d: "टॅप करा व विचारा – 'तू ठीक आहेस का?' उत्तर न आल्यास १०८ वर कॉल करा." },
+        { id: 2, t: "वायुमार्ग उघडा", d: "डोके मागे झुकवा व हनुवटी वर करा." },
+        { id: 3, t: "श्वास तपासा", d: "१० सेकंद सामान्य श्वास पहा, ऐका, अनुभवा." },
+        { id: 4, t: "कंप्रेशन सुरू करा", d: "छातीच्या मध्यभागी हाताची टाच ठेवा. जोरात व जलद दाबा (१००–१२०/मिनिट)." },
+        { id: 5, t: "कृत्रिम श्वास द्या", d: "३० कंप्रेशननंतर २ श्वास द्या. नाक चिमटा, तोंडाने हवा फुंकर घाला." },
+        { id: 6, t: "सीपीआर सुरू ठेवा", d: "३० कंप्रेशन आणि २ श्वास यांचे चक्र मदत येईपर्यंत पुन्हा करा." }
+      ]
+    },
+    dos: {
+      en: ["Keep the person on a firm, flat surface.", "Allow chest to fully recoil between compressions.", "Continue until professional help arrives or person moves.", "Use a metronome to keep the right pace."],
+      hi: ["व्यक्ति को सख्त, सपाट सतह पर रखें।", "दबाने के बीच छाती को पूरी तरह से ऊपर आने दें।", "पेशेवर मदद आने तक या व्यक्ति हिलने तक जारी रखें।", "सही गति बनाए रखने के लिए मेट्रोनोम का उपयोग करें।"],
+      mr: ["व्यक्तीला घट्ट, सपाट पृष्ठभागावर ठेवा.", "दाबाच्या दरम्यान छाती पूर्णपणे वर येऊ द्या.", "व्यावसायिक मदत येईपर्यंत किंवा व्यक्ती हलत नाही तोपर्यंत सुरू ठेवा.", "योग्य गतीसाठी मेट्रोनोम वापरा."]
+    },
+    donts: {
+      en: ["Do NOT bend the elbows during compressions.", "Do NOT lean on the chest after each push.", "Do NOT stop unless exhausted or help arrives.", "Do NOT give breaths without checking the airway first."],
+      hi: ["दबाते समय कोहनी न मोड़ें।", "प्रत्येक दबाने के बाद छाती पर न झुकें।", "तब तक न रुकें जब तक थक न जाएं या मदद न आ जाए।", "वायुमार्ग की जांच किए बिना सांस न दें।"],
+      mr: ["दाबताना कोपर वाकवू नका.", "प्रत्येक दाबानंतर छातीवर झुकू नका.", "थकल्याशिवाय किंवा मदत येईपर्यंत थांबू नका.", "वायुमार्ग तपासल्याशिवाय श्वास देऊ नका."]
+    }
+  },
 };

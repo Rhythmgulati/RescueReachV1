@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// screens/MedicineScannerScreen.js
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,22 +9,26 @@ import {
   Image,
   Alert,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { COLORS, SPACING, BORDER_RADIUS, FONT_SIZES } from '../constants/colors';
 import { loadLanguage } from '../utils/storage';
 import { translations } from '../utils/translations';
+import { extractMedicineText, searchMedicine } from '../services/medicineService';
+import { checkInternet } from '../utils/network.js';
 
 const MedicineScannerScreen = () => {
   const navigation = useNavigation();
   const [lang, setLang] = useState('en');
   const [image, setImage] = useState(null);
+  const [base64Data, setBase64Data] = useState(null);
   const [scanning, setScanning] = useState(false);
   const [result, setResult] = useState(null);
   const t = translations[lang];
 
-  React.useEffect(() => {
+  useEffect(() => {
     loadUserLanguage();
   }, []);
 
@@ -33,42 +38,62 @@ const MedicineScannerScreen = () => {
   };
 
   const pickImage = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    // Ask for camera roll permission (or camera, but we'll use library for better OCR)
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'Need camera permissions to scan medicine.');
+      Alert.alert('Permission Denied', 'Need photo library permissions to scan medicine label.');
       return;
     }
 
-    const result = await ImagePicker.launchCameraAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       quality: 0.8,
-      base64: true,
+      base64: true, // required for OCR
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0]);
+      const asset = result.assets[0];
+      setImage(asset);
+      setBase64Data(asset.base64);
       setResult(null);
     }
   };
 
-  const scanMedicine = async () => {
-    if (!image) {
-      Alert.alert('No Image', t.no_image);
-      return;
-    }
+const scanMedicine = async () => {
+  console.log('Scan button pressed');
+  if (!image) {
+    Alert.alert('No Image', 'Please select an image first.');
+    return;
+  }
 
-    setScanning(true);
-    // Simulate OCR + API call
-    setTimeout(() => {
-      setResult({
-        name: 'Paracetamol 500mg',
-        type: 'Analgesic / Antipyretic',
-        uses: 'Fever, Mild to moderate pain, Headache',
-        warning: 'Do not exceed recommended dose. Consult doctor for children under 12.',
-      });
-      setScanning(false);
-    }, 3000);
-  };
+  const isOnline = await checkInternet();
+  console.log('Internet online?', isOnline);
+  if (!isOnline) {
+    Alert.alert('Offline', 'Medicine scanning requires an internet connection.');
+    return;
+  }
+
+  setScanning(true);
+  try {
+    console.log('Calling extractMedicineText with base64 length:', base64Data?.length);
+    const extractedText = await extractMedicineText(base64Data);
+    console.log('Extracted text:', extractedText);
+    const medicineData = await searchMedicine(extractedText);
+    console.log('Medicine data:', medicineData);
+    setResult(medicineData);
+  } catch (error) {
+    console.error('Full error:', error);
+    // Show a detailed alert
+    Alert.alert(
+      'Scan Failed',
+      `Error: ${error.message || JSON.stringify(error)}\n\nCheck console for details.`
+    );
+    setResult(null);
+  } finally {
+    setScanning(false);
+  }
+};
 
   return (
     <SafeAreaView style={styles.container}>
@@ -95,9 +120,11 @@ const MedicineScannerScreen = () => {
           style={[styles.scanButton, (!image || scanning) && styles.scanButtonDisabled]}
           onPress={scanMedicine}
           disabled={!image || scanning}>
-          <Text style={styles.scanButtonText}>
-            {scanning ? t.reading : t.identify}
-          </Text>
+          {scanning ? (
+            <ActivityIndicator color={COLORS.white} />
+          ) : (
+            <Text style={styles.scanButtonText}>IDENTIFY</Text>
+          )}
         </TouchableOpacity>
 
         {result && (
@@ -109,8 +136,12 @@ const MedicineScannerScreen = () => {
             <Text style={styles.resultText}>{result.type}</Text>
             <Text style={styles.resultLabel}>Uses:</Text>
             <Text style={styles.resultText}>{result.uses}</Text>
-            <Text style={styles.resultLabel}>Warning:</Text>
-            <Text style={styles.resultWarning}>{result.warning}</Text>
+            {result.warning && (
+              <>
+                <Text style={styles.resultLabel}>Warning:</Text>
+                <Text style={styles.resultWarning}>{result.warning}</Text>
+              </>
+            )}
 
             <View style={styles.disclaimerBox}>
               <Text style={styles.disclaimerTitle}>⚠️ Disclaimer / अस्वीकरण</Text>
@@ -127,6 +158,7 @@ const MedicineScannerScreen = () => {
   );
 };
 
+// Styles remain exactly as you have them (no changes needed)
 const styles = StyleSheet.create({
   container: {
     flex: 1,

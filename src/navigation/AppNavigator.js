@@ -11,6 +11,9 @@ import ContactsScreen from '../screens/ContactsScreen';
 import WoundAnalysisScreen from '../screens/WoundAnalysisScreen';
 import MedicineScannerScreen from '../screens/MedicineScannerScreen';
 import SafeScreen from '../screens/SafeScreen';
+import CprScreen from '../screens/CprScreen';
+import RecoveryScreen from '../screens/RecoveryScreen';
+import BleedingScreen from '../screens/BleedingScreen';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +35,10 @@ const AppNavigator = ({ initialRouteName }) => {
       <Stack.Screen name="WoundAnalysis" component={WoundAnalysisScreen} />
       <Stack.Screen name="MedicineScanner" component={MedicineScannerScreen} />
       <Stack.Screen name="Safe" component={SafeScreen} />
+      <Stack.Screen name="CPR" component={CprScreen} />
+      <Stack.Screen name="Recovery" component={RecoveryScreen} />
+      <Stack.Screen name="Bleeding" component={ BleedingScreen} />
+      
     </Stack.Navigator>
   );
 };

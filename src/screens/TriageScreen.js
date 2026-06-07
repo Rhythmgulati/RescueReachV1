@@ -29,19 +29,28 @@ const TriageScreen = () => {
 
   const handleAnswer = (answer) => {
     const next = getNextStep(currentStep, answer);
-    
-    if (next && next.startsWith('step')) {
+    if (!next) return;
+
+    if (next.startsWith('step')) {
       setCurrentStep(next);
-    } else if (next && next.startsWith('result_')) {
+    } else if (next.startsWith('result_')) {
       const key = next.replace('result_', '');
-      if (key === 'safe') {
-        navigation.replace('Safe');
-      } else if (key === 'recovery') {
-        navigation.replace('Detail', { key: 'recovery' });
-      } else if (key === 'unconscious') {
-        navigation.replace('Detail', { key: 'unconscious' });
-      } else if (key === 'bleeding') {
-        navigation.replace('Detail', { key: 'bleeding' });
+      switch (key) {
+        case 'recovery':
+          navigation.replace('Recovery');
+          break;
+        case 'unconscious':
+          navigation.replace('CPR', { language: lang }); 
+          break;
+        case 'bleeding':
+          // Use the existing DetailScreen with bleeding guide
+          navigation.replace('Bleeding');
+          break;
+        case 'safe':
+          navigation.replace('Safe');
+          break;
+        default:
+          navigation.goBack();
       }
     }
   };
@@ -54,20 +63,20 @@ const TriageScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.headerText}>Triage Question</Text>
-        
+
         <View style={styles.questionBox}>
           <Text style={styles.questionText}>{currentQuestion}</Text>
         </View>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity 
-            style={[styles.button, styles.buttonYes]} 
+          <TouchableOpacity
+            style={[styles.button, styles.buttonYes]}
             onPress={() => handleAnswer('yes')}>
             <Text style={styles.buttonText}>YES</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity 
-            style={[styles.button, styles.buttonNo]} 
+
+          <TouchableOpacity
+            style={[styles.button, styles.buttonNo]}
             onPress={() => handleAnswer('no')}>
             <Text style={styles.buttonText}>NO</Text>
           </TouchableOpacity>

@@ -21,6 +21,7 @@ const DashboardScreen = () => {
   const [lang, setLang] = useState('en');
   const [isOnline, setIsOnline] = useState(true);
   const t = translations[lang];
+  
 
   useEffect(() => {
     loadUserLanguage();
@@ -42,6 +43,7 @@ const DashboardScreen = () => {
 
   const medicalGuides = [
     { key: 'snake_bite', icon: '🐍', title: t.snake },
+    { key: 'bleeding', icon: '🩸', title: t.bleeding },
     { key: 'fracture', icon: '🦴', title: t.fracture },
     { key: 'choking', icon: '😵', title: t.choking },
     { key: 'burns', icon: '🔥', title: t.burns },
@@ -51,21 +53,7 @@ const DashboardScreen = () => {
   ];
 
   const handleSOSTap = () => {
-    Alert.alert(
-      t.sos_title,
-      'Do you need immediate medical assistance?',
-      [
-        { text: t.cancel, style: 'cancel' },
-        { 
-          text: 'Call Ambulance', 
-          onPress: () => Linking.openURL(`tel:${EMERGENCY_NUMBERS.ambulance}`) 
-        },
-        { 
-          text: 'Start Triage', 
-          onPress: () => navigation.navigate('Triage') 
-        },
-      ]
-    );
+  navigation.navigate('Triage') 
   };
 
   const handleResetLanguage = async () => {
